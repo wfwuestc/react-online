@@ -5,6 +5,15 @@ import TodoItem from './TodoItem'
 import 'normalize.css'
 import '../css/reset.css'
 import * as localStore from './localStore'
+var APP_ID = 'f7gUoKO1Y7L5NPCRXyxieomG-gzGzoHsz';
+var APP_KEY = 'fGCb236NSFzxe54QQict80H5';
+var AV = require('leancloud-storage');
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+
 
 var log = console.log.bind(console)
 class App extends Component {
