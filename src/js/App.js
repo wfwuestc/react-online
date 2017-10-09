@@ -6,12 +6,10 @@ import 'normalize.css'
 import '../css/reset.css'
 // import * as localStore from './localStore'
 import UserDialog from './UserDialog'
-import {getCurrentUser} from './leanCloud'
-
+import {getCurrentUser, signOut} from './leanCloud'
 
 
 // var AV = require('leancloud-storage');
-
 
 
 // var TestObject = AV.Object.extend('TestObject');
@@ -25,11 +23,12 @@ import {getCurrentUser} from './leanCloud'
 
 
 var log = console.log.bind(console)
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user:'' || getCurrentUser(),
+      user: '' || getCurrentUser(),
       newTodo: '',
       todoList:
           [],
@@ -50,7 +49,9 @@ class App extends Component {
         })
     return (
         <div className="App">
-          <h1>{this.state.user.username||'我'}的待办</h1>
+          <h1>{this.state.user.username || '我'}的待办
+            {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
+          </h1>
           <div className="inputWrapper">
             <TodoInput content={this.state.newTodo}
                        onSubmit={this.addTodo.bind(this)}
@@ -67,6 +68,7 @@ class App extends Component {
   componentWillUpdate() {
     log('要更新了')
   }
+
   componentDidUpdate() {
     log('更新完毕')
     // localStore.save('todoList', this.state.todoList) // 每次更改后保存
@@ -105,9 +107,17 @@ class App extends Component {
     todo.deleted = true
     this.setState(this.state)
   }
-  onSignUp(user){
+
+  onSignUp(user) {
     let stateCopy = JSON.parse(JSON.stringify(this.state))
     stateCopy.user = user
+    this.setState(stateCopy)
+  }
+
+  signOut() {
+    signOut()
+    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    stateCopy.user = {}
     this.setState(stateCopy)
   }
 
