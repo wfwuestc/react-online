@@ -9,8 +9,18 @@ AV.init({
   appId: APP_ID,
   appKey: APP_KEY,
 })
-
+var dataObject = AV.Object.extend('data');
+var data = new dataObject()
 export default AV
+
+export function save(key, value) {
+  data.set(key, value)
+  data.save().then(function (todo) {
+    log('objectId is ' + todo.id);
+  }, function (error) {
+    console.error(error);
+  });
+}
 
 export function signUp(username, password, successFn, errorFn) {
   // 新建 AVUser 对象实例

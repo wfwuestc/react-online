@@ -6,7 +6,7 @@ import 'normalize.css'
 import '../css/reset.css'
 // import * as localStore from './localStore'
 import UserDialog from './UserDialog'
-import {getCurrentUser, signOut} from './leanCloud'
+import {getCurrentUser, signOut, save} from './leanCloud'
 
 
 // var AV = require('leancloud-storage');
@@ -30,8 +30,7 @@ class App extends Component {
     this.state = {
       user: getCurrentUser() || '',
       newTodo: '',
-      todoList:
-          [],
+      todoList: [],
     }
   }
 
@@ -76,6 +75,7 @@ class App extends Component {
   componentDidUpdate() {
     log('更新完毕')
     // localStore.save('todoList', this.state.todoList) // 每次更改后保存
+    save('todoList', this.state.todoList)
   }
 
   addTodo(e) {
