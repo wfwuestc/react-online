@@ -19,8 +19,19 @@ export function signUp(username, password, successFn, errorFn) {
   user.setUsername(username)
   // 设置密码
   user.setPassword(password)
-  // 设置邮箱
   user.signUp().then(function (loginedUser) {
+    log(loginedUser)
+    let user = getUserFromAVUser(loginedUser)
+    successFn.call(null, user)
+  }, function (error) {
+    errorFn.call(null, error)
+  })
+
+  return undefined
+
+}export function signIn(username, password, successFn, errorFn) {
+
+  AV.User.signIn(username, password).then(function (loginedUser) {
     log(loginedUser)
     let user = getUserFromAVUser(loginedUser)
     successFn.call(null, user)
@@ -39,11 +50,11 @@ function getUserFromAVUser(AVUser) {
   }
 }
 
-export function getCurrentUser() {
+export function getCurrentUser(){
   let user = AV.User.current()
-  if (user) {
+  if(user){
     return getUserFromAVUser(user)
-  } else {
+  }else{
     return null
   }
 }
