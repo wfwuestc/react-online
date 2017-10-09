@@ -4,16 +4,14 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import 'normalize.css'
 import '../css/reset.css'
-import * as localStore from './localStore'
+// import * as localStore from './localStore'
+import UserDialog from './UserDialog'
 
-var APP_ID = 'f7gUoKO1Y7L5NPCRXyxieomG-gzGzoHsz';
-var APP_KEY = 'fGCb236NSFzxe54QQict80H5';
-var AV = require('leancloud-storage');
 
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-});
+
+// var AV = require('leancloud-storage');
+
+
 
 // var TestObject = AV.Object.extend('TestObject');
 // var testObject = new TestObject();
@@ -31,7 +29,8 @@ class App extends Component {
     super(props)
     this.state = {
       newTodo: '',
-      todoList: localStore.load('todoList') || [],
+      todoList:
+          [],
     }
   }
 
@@ -58,6 +57,7 @@ class App extends Component {
           <ol className="todoList">
             {todos}
           </ol>
+          <UserDialog />
         </div>
     )
   }
@@ -67,7 +67,7 @@ class App extends Component {
   }
   componentDidUpdate() {
     log('更新完毕')
-    localStore.save('todoList', this.state.todoList) // 每次更改后保存
+    // localStore.save('todoList', this.state.todoList) // 每次更改后保存
   }
 
   addTodo(e) {
