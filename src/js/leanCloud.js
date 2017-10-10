@@ -9,17 +9,17 @@ AV.init({
   appId: APP_ID,
   appKey: APP_KEY,
 })
-var dataObject = AV.Object.extend('data');
+var dataObject = AV.Object.extend('data')
 var data = new dataObject()
 export default AV
 
 export function save(key, value) {
   data.set(key, value)
   data.save().then(function (todo) {
-    log('objectId is ' + todo.id);
+    log('objectId is ' + todo.id)
   }, function (error) {
-    console.error(error);
-  });
+    console.error(error)
+  })
 }
 
 export function signUp(email, username, password, successFn, errorFn) {
@@ -40,7 +40,9 @@ export function signUp(email, username, password, successFn, errorFn) {
 
   return undefined
 
-}export function signIn(username, password, successFn, errorFn) {
+}
+
+export function signIn(username, password, successFn, errorFn) {
 
   AV.User.signIn(username, password).then(function (loginedUser) {
     log(loginedUser)
@@ -54,6 +56,14 @@ export function signUp(email, username, password, successFn, errorFn) {
 
 }
 
+export function sendPasswordResetEmail(email, successFn, errorFn) {
+  AV.User.requestPasswordReset(email).then(function (success) {
+    successFn.call()
+  }, function (error) {
+    console.dir(error)
+  })
+}
+
 function getUserFromAVUser(AVUser) {
   return {
     id: AVUser.id,
@@ -61,11 +71,11 @@ function getUserFromAVUser(AVUser) {
   }
 }
 
-export function getCurrentUser(){
+export function getCurrentUser() {
   let user = AV.User.current()
-  if(user){
+  if (user) {
     return getUserFromAVUser(user)
-  }else{
+  } else {
     return null
   }
 }
