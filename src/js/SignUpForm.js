@@ -33,7 +33,7 @@ export default function (props) {
         <div className="row">
           <label>邮箱</label>
           <input type="text" value={props.formData.email}
-                 onChange={this.props.onChange.bind(null, 'email')}/>
+                 onChange={props.onChange.bind(null, 'email')}/>
         </div>
         <div className="row">
           <label>用户名</label>
@@ -42,7 +42,7 @@ export default function (props) {
         </div>
         <div className="row">
           <label>密码</label>
-          <input type="password" value={this.props.formData.password}
+          <input type="password" value={props.formData.password}
                  onChange={props.onChange.bind(null, 'password')}/>
         </div>
         <div className="row actions">

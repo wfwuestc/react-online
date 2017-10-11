@@ -9,7 +9,7 @@ export default class UserDialog extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'signInOrSignUp',
+      selectedTab: 'signInOrSingUp',
       formData: {
         username: '',
         password: '',

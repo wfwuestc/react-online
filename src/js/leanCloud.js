@@ -9,9 +9,31 @@ AV.init({
   appId: APP_ID,
   appKey: APP_KEY,
 })
-var dataObject = AV.Object.extend('data')
-var data = new dataObject()
+// var dataObject = AV.Object.extend('data')
+// var data = new dataObject()
 export default AV
+
+export const TodoModel = {
+  create({status, title, deleted}, successFn, errorFn) {
+    let Todo = AV.Object.extend('Todo') // 记得把多余的分号删掉，我讨厌分号
+    let todo = new Todo()
+    todo.set('title', title)
+    todo.set('status', status)
+    todo.set('deleted', deleted)
+    todo.save().then(function (response) {
+      successFn.call(null, response.id)
+    }, function (error) {
+      errorFn && errorFn.call(null, error)
+    })
+
+  },
+  update() {
+
+  },
+  destroy() {
+
+  },
+}
 
 export function save(key, value) {
   data.set(key, value)
