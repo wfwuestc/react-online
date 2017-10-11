@@ -90,7 +90,7 @@ class App extends Component {
     console.log('要添加代办了')
     let newTodo = {
       title: event.target.value,
-      status: null,
+      status: '',
       deleted: false,
     }
     TodoModel.create(newTodo, (id) => {
