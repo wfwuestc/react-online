@@ -12,14 +12,30 @@ AV.init({
 // var dataObject = AV.Object.extend('data')
 // var data = new dataObject()
 export default AV
-
 export const TodoModel = {
+  getByUser(user, successFn, errorFn) {
+    // 文档见 https://leancloud.cn/docs/leanstorage_guide-js.html#批量操作
+    let query = new AV.Query('Todo')
+    query.find().then((response) => {
+      let array = response.map((t) => {
+        return {id: t.id, ...t.attributes}
+      })
+      successFn.call(null, array)
+    }, (error) => {
+      errorFn && errorFn.call(null, error)
+    })
+  },
   create({status, title, deleted}, successFn, errorFn) {
     let Todo = AV.Object.extend('Todo') // 记得把多余的分号删掉，我讨厌分号
     let todo = new Todo()
     todo.set('title', title)
     todo.set('status', status)
     todo.set('deleted', deleted)
+    let acl = new AV.ACL()
+    acl.setPublicReadAccess(false) // 注意这里是 false 公共不可读
+    acl.setWriteAccess(AV.User.current(), true)//当前用户可读
+
+    todo.setACL(acl);//应用acl
     todo.save().then(function (response) {
       successFn.call(null, response.id)
     }, function (error) {
