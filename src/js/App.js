@@ -115,8 +115,14 @@ class App extends Component {
 
   toggle(e, todo) {
     log('要切换状态了')
+    let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
-    this.setState(this.state)
+    TodoModel.update(todo, () => {
+      this.setState(this.state)
+    }, (error) => {
+      todo.status = oldStatus
+      this.setState(this.state)
+    })
   }
 
   delete(e, todo) {
