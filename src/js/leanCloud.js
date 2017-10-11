@@ -35,7 +35,7 @@ export const TodoModel = {
     acl.setPublicReadAccess(false) // 注意这里是 false 公共不可读
     acl.setWriteAccess(AV.User.current(), true)//当前用户可读
 
-    todo.setACL(acl);//应用acl
+    todo.setACL(acl)//应用acl
     todo.save().then(function (response) {
       successFn.call(null, response.id)
     }, function (error) {
@@ -46,7 +46,14 @@ export const TodoModel = {
   update() {
 
   },
-  destroy() {
+  destroy(todoId, successFn, errorFn) {
+    // 文档 https://leancloud.cn/docs/leanstorage_guide-js.html#删除对象
+    let todo = AV.Object.createWithoutData('Todo', todoId)
+    todo.destroy().then(function (response) {
+      successFn && successFn.call(null)
+    }, function (error) {
+      errorFn && errorFn.call(null, error)
+    })
 
   },
 }
