@@ -6,7 +6,7 @@ import 'normalize.css'
 import '../css/reset.css'
 // import * as localStore from './localStore'
 import UserDialog from './UserDialog'
-import {getCurrentUser, signOut} from './leanCloud'
+import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
 
 // var AV = require('leancloud-storage');
@@ -78,17 +78,22 @@ class App extends Component {
     // save('todoList', this.state.todoList)
   }
 
-  addTodo(e) {
+  addTodo(event) {
     console.log('要添加代办了')
-    this.state.todoList.push({
-      id: idMaker(),
-      title: e.target.value,
+    let newTodo = {
+      title: event.target.value,
       status: null,
       deleted: false,
-    })
-    this.setState({
-      newTodo: '',
-      todoList: this.state.todoList,
+    }
+    TodoModel.create(newTodo, (id) => {
+      newTodo.id = id
+      this.state.todoList.push(newTodo)
+      this.setState({
+        newTodo: '',
+        todoList: this.state.todoList,
+      })
+    }, (error) => {
+      console.log(error)
     })
   }
 

@@ -35,14 +35,14 @@ export const TodoModel = {
   },
 }
 
-export function save(key, value) {
-  data.set(key, value)
-  data.save().then(function (todo) {
-    log('objectId is ' + todo.id)
-  }, function (error) {
-    console.error(error)
-  })
-}
+// export function save(key, value) {
+//   data.set(key, value)
+//   data.save().then(function (todo) {
+//     log('objectId is ' + todo.id)
+//   }, function (error) {
+//     console.error(error)
+//   })
+// }
 
 export function signUp(email, username, password, successFn, errorFn) {
   // 新建 AVUser 对象实例
