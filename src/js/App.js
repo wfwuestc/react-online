@@ -149,11 +149,5 @@ class App extends Component {
 
 export default App
 
-let id = 0
-
-function idMaker() {
-  id += 1
-  return id
-}
 
 export {log}

@@ -101,7 +101,7 @@ export function signUp(email, username, password, successFn, errorFn) {
 
 export function signIn(username, password, successFn, errorFn) {
 
-  AV.User.signIn(username, password).then(function (loginedUser) {
+  AV.User.logIn(username, password).then(function (loginedUser) {
     log(loginedUser)
     let user = getUserFromAVUser(loginedUser)
     successFn.call(null, user)

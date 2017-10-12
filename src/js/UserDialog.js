@@ -9,7 +9,7 @@ export default class UserDialog extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'signInOrSingUp',
+      selectedTab: 'signInOrSignUp',
       formData: {
         username: '',
         password: '',
@@ -74,7 +74,7 @@ export default class UserDialog extends Component {
     return (
         <div className="UserDialog-Wrapper">
           <div className="UserDialog">
-            {this.state.selectedTab === 'signInOrSingUp' ? <SignInOrSignUp
+            {this.state.selectedTab === 'signInOrSignUp' ? <SignInOrSignUp
                 onChange={this.changeFormData.bind(this)}
                 formData={this.state.formData}
                 onSignIn={this.signIn.bind(this)}
@@ -105,7 +105,7 @@ export default class UserDialog extends Component {
 
   resetPassword(e) {
     e.preventDefault()
-    sendPasswordResetEmail(this.state.formData.email)
+    sendPasswordResetEmail(this.state.formData.email, this.returnToSignIn())
 
   }
 }
