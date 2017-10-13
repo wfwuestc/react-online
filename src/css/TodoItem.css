@@ -3,7 +3,15 @@
   display: flex;
   align-items: center;
 }
-.TodoItem .delete:after {
+.todoList > li {
+  position: relative;
+}
+.delete {
+  position: absolute;
+  right: 0.5em;
+  top: 0.3em;
+}
+.delete:after {
   font-family: "iconfont";
   font-style: normal;
   -webkit-font-smoothing: antialiased;

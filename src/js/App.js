@@ -35,10 +35,8 @@ class App extends Component {
         .filter((item) => !item.deleted)
         .map((item, index) => {
           return ( // 为什么这里要加个括号？这是动手题3 🐸
-              <li key={index}>
-                <TodoItem todo={item} onToggle={this.toggle.bind(this)}
-                          onDelete={this.delete.bind(this)}/>
-              </li>
+                  <TodoItem todo={item} onToggle={this.toggle.bind(this)}
+                            onDelete={this.delete.bind(this)} key={index}/>
           )
         })
     return (
@@ -71,6 +69,19 @@ class App extends Component {
     log('更新完毕')
     // localStore.save('todoList', this.state.todoList) // 每次更改后保存
     // save('todoList', this.state.todoList)
+    let todoList = this.state.todoList
+    log(todoList)
+    for(var i=0; i < todoList.length; i++){
+      let liNode = document.querySelector('.todoList').children[i]
+      log(liNode)
+      let bool = todoList[i].deleted
+      if (todoList[i].status === 'completed' && !bool){
+        
+        liNode.firstChild.setAttribute('class', 'completed TodoItem')
+      } else if (!bool){
+        liNode.firstChild.setAttribute('class', 'TodoItem')
+      }
+    }
   }
 
   addTodo(event) {
@@ -104,11 +115,11 @@ class App extends Component {
     log('要切换状态了')
     let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
-    if (todo.status === 'completed') {
-      e.target.parentNode.setAttribute('class', 'completed TodoItem')
-    } else {
-      e.target.parentNode.setAttribute('class', 'TodoItem')
-    }
+    // if (todo.status === 'completed') {
+    //   e.target.parentNode.setAttribute('class', 'completed TodoItem')
+    // } else {
+    //   e.target.parentNode.setAttribute('class', 'TodoItem')
+    // }
     TodoModel.update(todo, () => {
       this.setState(this.state)
     }, (error) => {

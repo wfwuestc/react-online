@@ -3,6 +3,14 @@
   /*内容居中*/  display: flex; justify-content: center; align-items: center;
   background: rgba(240, 239, 233, 1);
 }
+
+@keyframes show {
+  0% { }
+  100% { transform: scale(0.1)}
+}
+.hidePanel {
+  animation: show 0.7s;
+}
 .UserDialog{
   border: 1px solid;
   border-radius: 4px;

@@ -93,6 +93,7 @@ export default class UserDialog extends Component {
     let {username, password} = this.state.formData
     let success = (user) => {
       this.props.onSignIn.call(null, user)
+      document.querySelector('.UserDialog-Wrapper').setAttribute('class', 'UserDialog-Wrapper hidePanel')
     }
     let error = (error) => {
       switch (error.code) {

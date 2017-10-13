@@ -11,6 +11,14 @@
   align-items: center;
   background: #f0efe9;
 }
+@keyframes show {
+  100% {
+    transform: scale(0.1);
+  }
+}
+.hidePanel {
+  animation: show 0.7s;
+}
 .UserDialog {
   border: 1px solid;
   border-radius: 4px;
