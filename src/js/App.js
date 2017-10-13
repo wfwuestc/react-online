@@ -9,19 +9,6 @@ import UserDialog from './UserDialog'
 import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
 
-// var AV = require('leancloud-storage');
-
-
-// var TestObject = AV.Object.extend('TestObject');
-// var testObject = new TestObject();
-// testObject.save({
-//   words: 'Hello Wen!',
-//   test: 'hi fengwei'
-// }).then(function(object) {
-//   alert('LeanCloud Rocks!');
-// })
-
-
 var log = console.log.bind(console)
 
 class App extends Component {

@@ -38,7 +38,49 @@ export default class UserDialog extends Component {
           break
       }
     }
-    signUp(email, username, password, success, error)
+    this.check(username, password, email, success, error)
+  }
+  check(username, password, email, success, error) {
+    var userCheck = /\w{3,}/.test(username)
+    var pwCheck = /\w{6,}/.test(password)
+    var emailCheck = /\w+@\w+/.test(email)
+    if(!userCheck){
+      this.showCheck(1)
+    }
+    if(!pwCheck){
+      this.showCheck(2)
+    }
+    if(!emailCheck && (email !=='no')){
+      this.showCheck(3)
+    }
+    if (email === 'no'){
+      if(userCheck && pwCheck) {
+        signIn(username, password, success, error)
+      }
+    } else {
+      if(userCheck && pwCheck && emailCheck) {
+        signUp(email, username, password, success, error)
+      }
+    }
+
+  }
+  showCheck(key) {
+    switch (key) {
+      case 1:
+        log('username must have 3 char')
+        alert('username must have 3 char')
+        break
+      case 2:
+        log('password must have 6 char')
+        alert('password must have 6 char')
+        break
+      case 3:
+        log('email must have @')
+        alert('email must have @')
+        break
+      default:
+        log('error')
+    }
   }
 
   signIn(e) {
@@ -60,7 +102,7 @@ export default class UserDialog extends Component {
           break
       }
     }
-    signIn(username, password, success, error)
+    this.check(username, password, 'no', success, error)
   }
 
 
