@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
+import {log} from "./App"
 
 export default class SignInOrSignUp extends Component {
   constructor (props) {
@@ -15,17 +16,23 @@ export default class SignInOrSignUp extends Component {
       selected: e.target.value
     })
   }
-
+  changeState (e){
+    let a = e.target.parentNode.children
+    for(var i = 0; i<a.length; i++){
+      a[i].setAttribute('class', '')
+    }
+    e.target.setAttribute('class','checked')
+  }
   render () {
     return (
         <div className="signInOrSignUp">
           <nav>
-            <label>
+            <label onClick={this.changeState.bind(this)}>
               <input type="radio" value="signUp"
                      checked={this.state.selected === 'signUp'}
                      onChange={this.switch.bind(this)}
               /> 注册</label>
-            <label>
+            <label onClick={this.changeState.bind(this)} className={'checked'}>
               <input type="radio" value="signIn"
                      checked={this.state.selected === 'signIn'}
                      onChange={this.switch.bind(this)}

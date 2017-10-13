@@ -44,7 +44,7 @@ class App extends Component {
     return (
         <div className="App">
           <h1>{this.state.user.username || '我'}的待办
-            {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
+            {this.state.user.id ? <div className='logout' onClick={this.signOut.bind(this)}></div> : null}
           </h1>
           <div className="inputWrapper">
             <TodoInput content={this.state.newTodo}
@@ -104,6 +104,11 @@ class App extends Component {
     log('要切换状态了')
     let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
+    if (todo.status === 'completed') {
+      e.target.parentNode.setAttribute('class', 'completed TodoItem')
+    } else {
+      e.target.parentNode.setAttribute('class', 'TodoItem')
+    }
     TodoModel.update(todo, () => {
       this.setState(this.state)
     }, (error) => {

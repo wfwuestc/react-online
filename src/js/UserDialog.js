@@ -68,14 +68,19 @@ export default class UserDialog extends Component {
     switch (key) {
       case 1:
         log('username must have 3 char')
+        document.querySelector('.username>.status').setAttribute('class', 'status wrong')
         alert('username must have 3 char')
         break
       case 2:
         log('password must have 6 char')
+        document.querySelector('.password>.status').setAttribute('class', 'status wrong')
+
         alert('password must have 6 char')
         break
       case 3:
         log('email must have @')
+        document.querySelector('.email>.status').setAttribute('class', 'status wrong')
+
         alert('email must have @')
         break
       default:

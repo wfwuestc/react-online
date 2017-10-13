@@ -10,7 +10,33 @@
   background: #fafff4;
   border: 1px solid #aaa;
   box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.52);
+
+  nav {
+    display: flex;
+    justify-content: center;
+    input {
+      display: none;
+    }
+    &.checked {
+      color: red;
+    }
+    label.checked {
+      color: red;
+      font-weight: bold;
+    }
+
+  }
+
 }
+@font-face {
+  font-family: 'iconfont';  /* project id 440476 */
+  src: url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.eot');
+  src: url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.svg#iconfont') format('svg');
+}
+
 .UserDialog .signInOrSignUp > nav:first-child{ padding: 1em; margin-left: -2em;}
 .UserDialog .signInOrSignUp > nav:first-child label{ margin-left: 2em; cursor: pointer;}
 .UserDialog .signInOrSignUp > .panes { padding: 0 1em 1em; }
@@ -18,9 +44,50 @@
 .UserDialog .forgotPassword > h3 { padding: 1em; }
 .UserDialog .forgotPassword > form { padding: 0 1em 1em; }
 
-.UserDialog form>.row{ display: flex; padding: .3em 0; }
+.UserDialog form>.row{
+  display: flex;
+  padding: .3em 0;
+  .status {
+    font-family: "iconfont";
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .wrong:after {
+    content: "\e671";
+    font-size: 20px;
+    vertical-align: middle;
+    padding: 10px;
+    color: red;
+  }
+}
 .UserDialog form>.row>label:first-child{ width: 4em; }
-.UserDialog form>.row.actions{ padding-left: 7em; display: flex; align-items: center;}
+.UserDialog form>.row.actions{
+  padding-left: 7em;
+  display: flex;
+  align-items: center;
+  a {
+    font-size: small;
+    text-decoration: none;
+    margin: 0.8em 0 0 1em;
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.forgotPassword form>.row.actions {
+  padding-left: 5em;
+}
 .UserDialog form>.row.actions button{ margin-right: .5em; }
 
-.UserDialog button{font: inherit; padding: .3em 0.5em;}
+.UserDialog button {
+  font: inherit;
+  padding: .3em 0.5em;
+  border-width: 0;
+  border-radius: 3px;
+  &:hover {
+    background-color: rgb(80, 128, 216);
+    color: rgb(255, 255, 255);
+  }
+}

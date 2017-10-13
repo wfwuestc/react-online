@@ -1,0 +1,51 @@
+.App {
+  position: relative;
+  text-align: center;
+  color: #333;
+  border: 1px solid #aaa;
+  background: rgb(250, 255, 244);
+  margin: 2em;
+  padding: 0 1em;
+  min-height: 20em;
+  min-width: 32em;
+  box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.15);
+  .logout {
+    position: absolute;
+    top: 0.3em;
+    right: 0.5em;
+    font-family: "iconfont";
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+    &:after {
+      content: "\e671";
+      font-size: 20px;
+      vertical-align: middle;
+      color: red;
+      cursor: pointer;
+    }
+  }
+  h1 {
+    color: rgba(0, 76, 255, 0.69);
+  }
+
+}
+
+
+
+li>div:hover {
+  margin: 0 auto;
+  background-color: red;
+  color: white;
+}
+
+App > .todoList> li:nth-child(odd){
+  background: #eee;
+}
+.App > .todoList> li:nth-child(even){
+  background: transparent;
+}
