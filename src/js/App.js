@@ -69,16 +69,15 @@ class App extends Component {
     log('更新完毕')
     // localStore.save('todoList', this.state.todoList) // 每次更改后保存
     // save('todoList', this.state.todoList)
-    let todoList = this.state.todoList
+    let todoList = this.state.todoList.filter((item) => !item.deleted)
     log(todoList)
     for(var i=0; i < todoList.length; i++){
       let liNode = document.querySelector('.todoList').children[i]
       log(liNode)
-      let bool = todoList[i].deleted
-      if (todoList[i].status === 'completed' && !bool){
-        
+      if (todoList[i].status === 'completed' ){
+
         liNode.firstChild.setAttribute('class', 'completed TodoItem')
-      } else if (!bool){
+      } else {
         liNode.firstChild.setAttribute('class', 'TodoItem')
       }
     }
