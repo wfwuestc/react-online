@@ -33,19 +33,26 @@ export default function (props) {
         <div className="row email">
           <label></label>
           <input type="text" value={props.formData.email}
-                 onChange={props.onChange.bind(null, 'email')}/>
+                 onChange={props.onChange.bind(null, 'email')}
+                 placeholder={"请输入邮箱"}
+          />
           <Status />
         </div>
         <div className="row username">
           <label></label>
           <input type="text" value={props.formData.username}
-                 onChange={props.onChange.bind(null, 'username')}/>
+                 onChange={props.onChange.bind(null, 'username')}
+                 placeholder={"请输入帐号 至少3字符"}
+          />
+
           <Status />
         </div>
         <div className="row password">
           <label></label>
           <input type="password" value={props.formData.password}
-                 onChange={props.onChange.bind(null, 'password')}/>
+                 onChange={props.onChange.bind(null, 'password')}
+                 placeholder={"请输入密码 至少6字符"}
+          />
           <Status />
         </div>
         <div className="row actions">

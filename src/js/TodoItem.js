@@ -8,7 +8,8 @@ export default class TodoItem extends Component {
           <div className='TodoItem' onClick={this.toggle.bind(this)}>
             <input type="checkbox" checked={this.props.todo.status === 'completed'}
                    className='magic-checkbox'
-                   onChange={this.toggle.bind(this)}/>
+                   onChange={this.toggle.bind(this)}
+            />
             <label className="title">{this.props.todo.title}</label>
           </div>
           <div className='delete' onClick={this.delete.bind(this)}></div>
