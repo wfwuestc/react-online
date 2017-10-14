@@ -102,9 +102,10 @@ export function signUp(email, username, password, successFn, errorFn) {
 export function signIn(username, password, successFn, errorFn) {
 
   AV.User.logIn(username, password).then(function (loginedUser) {
-    log(loginedUser)
     let user = getUserFromAVUser(loginedUser)
+    log('login.......', AV.User.current())
     successFn.call(null, user)
+
   }, function (error) {
     errorFn.call(null, error)
   })
@@ -131,6 +132,7 @@ function getUserFromAVUser(AVUser) {
 export function getCurrentUser() {
   let user = AV.User.current()
   if (user) {
+    log('get user......',user)
     return getUserFromAVUser(user)
   } else {
     return null

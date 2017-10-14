@@ -27,6 +27,7 @@ class App extends Component {
         this.setState(stateCopy)
       })
     }
+
   }
 
   render() {
@@ -35,8 +36,8 @@ class App extends Component {
         .filter((item) => !item.deleted)
         .map((item, index) => {
           return ( // 为什么这里要加个括号？这是动手题3 🐸
-                  <TodoItem todo={item} onToggle={this.toggle.bind(this)}
-                            onDelete={this.delete.bind(this)} key={index}/>
+              <TodoItem todo={item} onToggle={this.toggle.bind(this)}
+                        onDelete={this.delete.bind(this)} key={index}/>
           )
         })
     return (
@@ -65,16 +66,21 @@ class App extends Component {
     log('要更新了')
   }
 
+  componentWillMount() {
+    log('要加载了')
+    log(this.state)
+  }
+
   componentDidUpdate() {
     log('更新完毕')
     // localStore.save('todoList', this.state.todoList) // 每次更改后保存
     // save('todoList', this.state.todoList)
     let todoList = this.state.todoList.filter((item) => !item.deleted)
     log(todoList)
-    for(var i=0; i < todoList.length; i++){
+    for (var i = 0; i < todoList.length; i++) {
       let liNode = document.querySelector('.todoList').children[i]
       log(liNode)
-      if (todoList[i].status === 'completed' ){
+      if (todoList[i].status === 'completed') {
 
         liNode.firstChild.setAttribute('class', 'completed TodoItem')
       } else {
@@ -139,6 +145,14 @@ class App extends Component {
     let stateCopy = JSON.parse(JSON.stringify(this.state))
     stateCopy.user = user
     this.setState(stateCopy)
+    let user1 = getCurrentUser()
+    if (user1) {
+      TodoModel.getByUser(user, (todos) => {
+        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        stateCopy.todoList = todos
+        this.setState(stateCopy)
+      })
+    }
   }
 
   signOut() {

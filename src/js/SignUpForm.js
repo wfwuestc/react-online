@@ -31,19 +31,19 @@ export default function (props) {
   return (
       <form className="signUp" onSubmit={props.onSubmit.bind(this)}> {/* 注册*/}
         <div className="row email">
-          <label>邮箱</label>
+          <label></label>
           <input type="text" value={props.formData.email}
                  onChange={props.onChange.bind(null, 'email')}/>
           <Status />
         </div>
         <div className="row username">
-          <label>用户名</label>
+          <label></label>
           <input type="text" value={props.formData.username}
                  onChange={props.onChange.bind(null, 'username')}/>
           <Status />
         </div>
         <div className="row password">
-          <label>密码</label>
+          <label></label>
           <input type="password" value={props.formData.password}
                  onChange={props.onChange.bind(null, 'password')}/>
           <Status />

@@ -20,12 +20,15 @@
   animation: show 0.7s;
 }
 .UserDialog {
-  border: 1px solid;
   border-radius: 4px;
   min-width: 20em;
   background: #fafff4;
   border: 1px solid #aaa;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.52);
+  font-family: "iconfont";
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .UserDialog nav {
   display: flex;
@@ -41,11 +44,40 @@
   color: red;
   font-weight: bold;
 }
+.UserDialog .username > label:before {
+  content: "\e607";
+  font-size: 1.5em;
+  vertical-align: middle;
+  color: #55ff6c;
+}
+.UserDialog .password > label:before {
+  content: "\e6d7";
+  font-size: 1.5em;
+  vertical-align: middle;
+  color: red;
+}
+.UserDialog .email > label:before {
+  content: "\e613";
+  font-size: 1.1em;
+  vertical-align: middle;
+  color: #68f7ff;
+}
+.UserDialog .forgotPassword label:before {
+  content: "\e613";
+  font-size: 1.1em;
+  vertical-align: middle;
+  color: #68f7ff;
+}
+.UserDialog > h1 {
+  padding: 0;
+  margin-top: 0.3em;
+  margin-bottom: 0;
+}
 @font-face {
   font-family: 'iconfont';
   /* project id 440476 */
-  src: url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.eot');
-  src: url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.woff') format('woff'), url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.ttf') format('truetype'), url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_440476_837681gier9kke29.eot');
+  src: url('//at.alicdn.com/t/font_440476_837681gier9kke29.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_440476_837681gier9kke29.woff') format('woff'), url('//at.alicdn.com/t/font_440476_837681gier9kke29.ttf') format('truetype'), url('//at.alicdn.com/t/font_440476_837681gier9kke29.svg#iconfont') format('svg');
 }
 .UserDialog .signInOrSignUp > nav:first-child {
   padding: 1em;
@@ -66,6 +98,7 @@
 }
 .UserDialog form > .row {
   display: flex;
+  justify-content: center;
   padding: .3em 0;
 }
 .UserDialog form > .row .status {
@@ -75,14 +108,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .UserDialog form > .row .wrong:after {
-  content: "\e671";
+  content: "\e600";
   font-size: 20px;
   vertical-align: middle;
   padding: 10px;
   color: red;
 }
 .UserDialog form > .row > label:first-child {
-  width: 4em;
+  width: 2em;
 }
 .UserDialog form > .row.actions {
   padding-left: 7em;
@@ -112,4 +145,7 @@
 .UserDialog button:hover {
   background-color: #5080d8;
   color: #ffffff;
+}
+.UserDialog .signUp > .actions.row {
+  padding-left: 1em;
 }

@@ -92,6 +92,7 @@ export default class UserDialog extends Component {
     e.preventDefault()
     let {username, password} = this.state.formData
     let success = (user) => {
+      log('login user', user)
       this.props.onSignIn.call(null, user)
       document.querySelector('.UserDialog-Wrapper').setAttribute('class', 'UserDialog-Wrapper hidePanel')
     }
@@ -122,6 +123,7 @@ export default class UserDialog extends Component {
     return (
         <div className="UserDialog-Wrapper">
           <div className="UserDialog">
+            <h1>Welcome</h1>
             {this.state.selectedTab === 'signInOrSignUp' ? <SignInOrSignUp
                 onChange={this.changeFormData.bind(this)}
                 formData={this.state.formData}

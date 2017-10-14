@@ -29,16 +29,20 @@ export default function (props) {
   return (
       <form className="signIn" onSubmit={props.onSubmit}> {/* 登录*/}
         <div className="row username">
-          <label>用户名</label>
-          <input type="text" value={props.formData.username}
-                   onChange={props.onChange.bind(null, 'username')}/>
-          <Status />
+          <label></label>
+          <input type="text"
+                 value={props.formData.username}
+                 placeholder={"请输入帐号 至少3字符"}
+                 onChange={props.onChange.bind(null, 'username')}/>
+          <Status/>
         </div>
         <div className="row password">
-          <label>密码</label>
+          <label></label>
           <input type="password" value={props.formData.password}
-                 onChange={props.onChange.bind(null, 'password')}/>
-          <Status />
+                 onChange={props.onChange.bind(null, 'password')}
+                 placeholder={"请输入密码 至少6字符"}/>
+
+          <Status/>
         </div>
         <div className="row actions">
           <button type="submit">登录</button>

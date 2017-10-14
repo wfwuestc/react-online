@@ -1,18 +1,30 @@
-.UserDialog-Wrapper{
-  /*全屏*/      position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-  /*内容居中*/  display: flex; justify-content: center; align-items: center;
+.UserDialog-Wrapper {
+  /*全屏*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /*内容居中*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(240, 239, 233, 1);
 }
 
 @keyframes show {
-  0% { }
-  100% { transform: scale(0.1)}
+  0% {
+  }
+  100% {
+    transform: scale(0.1)
+  }
 }
+
 .hidePanel {
   animation: show 0.7s;
 }
-.UserDialog{
-  border: 1px solid;
+
+.UserDialog {
   border-radius: 4px;
   min-width: 20em;
   background: #fafff4;
@@ -34,26 +46,77 @@
     }
 
   }
+  font-family: "iconfont";
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  .username>label:before {
+    content: "\e607";
+    font-size: 1.5em;
+    vertical-align: middle;
+    color: #55ff6c;
+  }
+  .password>label:before {
+    content: "\e6d7";
+    font-size: 1.5em;
+    vertical-align: middle;
+    color: red;
+  }
+  .email>label:before {
+    content: "\e613";
+    font-size: 1.1em;
+    vertical-align: middle;
+    color: #68f7ff;
+  }
+  .forgotPassword label:before {
+    content: "\e613";
+    font-size: 1.1em;
+    vertical-align: middle;
+    color: #68f7ff;
+  }
 
 }
+
+.UserDialog > h1 {
+  padding: 0;
+  margin-top: 0.3em;
+  margin-bottom: 0;
+}
+
 @font-face {
   font-family: 'iconfont';  /* project id 440476 */
-  src: url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.eot');
-  src: url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_440476_zt361rcge7firudi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_440476_837681gier9kke29.eot');
+  src: url('//at.alicdn.com/t/font_440476_837681gier9kke29.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_440476_837681gier9kke29.woff') format('woff'),
+  url('//at.alicdn.com/t/font_440476_837681gier9kke29.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_440476_837681gier9kke29.svg#iconfont') format('svg');
 }
 
-.UserDialog .signInOrSignUp > nav:first-child{ padding: 1em; margin-left: -2em;}
-.UserDialog .signInOrSignUp > nav:first-child label{ margin-left: 2em; cursor: pointer;}
-.UserDialog .signInOrSignUp > .panes { padding: 0 1em 1em; }
+.UserDialog .signInOrSignUp > nav:first-child {
+  padding: 1em;
+  margin-left: -2em;
+}
 
-.UserDialog .forgotPassword > h3 { padding: 1em; }
-.UserDialog .forgotPassword > form { padding: 0 1em 1em; }
+.UserDialog .signInOrSignUp > nav:first-child label {
+  margin-left: 2em;
+  cursor: pointer;
+}
 
-.UserDialog form>.row{
+.UserDialog .signInOrSignUp > .panes {
+  padding: 0 1em 1em;
+}
+
+.UserDialog .forgotPassword > h3 {
+  padding: 1em;
+}
+
+.UserDialog .forgotPassword > form {
+  padding: 0 1em 1em;
+}
+
+.UserDialog form > .row {
   display: flex;
+  justify-content: center;
   padding: .3em 0;
   .status {
     font-family: "iconfont";
@@ -62,15 +125,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
   .wrong:after {
-    content: "\e671";
+    content: "\e600";
     font-size: 20px;
     vertical-align: middle;
     padding: 10px;
     color: red;
   }
 }
-.UserDialog form>.row>label:first-child{ width: 4em; }
-.UserDialog form>.row.actions{
+
+.UserDialog form > .row > label:first-child {
+  width: 2em;
+}
+
+.UserDialog form > .row.actions {
   padding-left: 7em;
   display: flex;
   align-items: center;
@@ -84,10 +151,13 @@
   }
 }
 
-.forgotPassword form>.row.actions {
+.forgotPassword form > .row.actions {
   padding-left: 5em;
 }
-.UserDialog form>.row.actions button{ margin-right: .5em; }
+
+.UserDialog form > .row.actions button {
+  margin-right: .5em;
+}
 
 .UserDialog button {
   font: inherit;
@@ -98,4 +168,7 @@
     background-color: rgb(80, 128, 216);
     color: rgb(255, 255, 255);
   }
+}
+.UserDialog .signUp>.actions.row {
+  padding-left: 1em;
 }
