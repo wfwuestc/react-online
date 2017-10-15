@@ -40,49 +40,95 @@ export default class UserDialog extends Component {
     }
     this.check(username, password, email, success, error)
   }
+
   check(username, password, email, success, error) {
     var userCheck = /\w{3,}/.test(username)
     var pwCheck = /\w{6,}/.test(password)
     var emailCheck = /\w+@\w+/.test(email)
-    if(!userCheck){
-      this.showCheck(1)
+    let count = 0
+    if (!userCheck) {
+      count += 1
     }
-    if(!pwCheck){
-      this.showCheck(2)
+    if (!pwCheck) {
+      count += 2
     }
-    if(!emailCheck && (email !=='no')){
-      this.showCheck(3)
+    if (!emailCheck && (email !== 'no')) {
+      count += 4
     }
-    if (email === 'no'){
-      if(userCheck && pwCheck) {
+    log(count)
+    this.showCheck(count)
+    if (count === 0 && email === 'no'){
         signIn(username, password, success, error)
-      }
+
     } else {
-      if(userCheck && pwCheck && emailCheck) {
+      if (count === 0) {
         signUp(email, username, password, success, error)
       }
     }
 
   }
+
   showCheck(key) {
+    let stateCopy = JSON.parse(JSON.stringify(this.state))
     switch (key) {
       case 1:
         log('username must have 3 char')
         document.querySelector('.username>.status').setAttribute('class', 'status wrong')
-        alert('username must have 3 char')
+        stateCopy.formData.username = ""
+        this.setState(stateCopy)
         break
       case 2:
         log('password must have 6 char')
         document.querySelector('.password>.status').setAttribute('class', 'status wrong')
-
-        alert('password must have 6 char')
+        stateCopy.formData.password = ""
+        this.setState(stateCopy)
         break
       case 3:
+        log('username must have 3 char')
+        log('password must have 6 char')
+        document.querySelector('.password>.status').setAttribute('class', 'status wrong')
+        document.querySelector('.username>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.password = ""
+        stateCopy.formData.username = ""
+        this.setState(stateCopy)
+        break
+      case 4:
         log('email must have @')
         document.querySelector('.email>.status').setAttribute('class', 'status wrong')
-
-        alert('email must have @')
+        stateCopy.formData.email = ""
+        this.setState(stateCopy)
         break
+      case 5:
+        log('email must have @')
+        log('username must have 3 char')
+        document.querySelector('.username>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.username = ""
+        document.querySelector('.email>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.email = ""
+        this.setState(stateCopy)
+        break
+      case 7:
+        log('username must have 3 char')
+        log('email must have @')
+        log('password must have 3 char')
+        document.querySelector('.password>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.password = ""
+        document.querySelector('.username>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.username = ""
+        document.querySelector('.email>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.email = ""
+        this.setState(stateCopy)
+        break
+      case 6:
+        log('email must have @')
+        log('password must have 3 char')
+        document.querySelector('.password>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.password = ""
+        document.querySelector('.email>.status').setAttribute('class', 'status wrong')
+        stateCopy.formData.email = ""
+        this.setState(stateCopy)
+        break
+
       default:
         log('error')
     }
@@ -99,10 +145,10 @@ export default class UserDialog extends Component {
     let error = (error) => {
       switch (error.code) {
         case 210:
-          alert('用户名与密码不匹配')
+          log('用户名与密码不匹配')
           break
         case 211:
-          alert('找不到用户')
+          log('找不到用户')
           break
         default:
           alert(error)

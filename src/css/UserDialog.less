@@ -30,20 +30,44 @@
   background: #fafff4;
   border: 1px solid #aaa;
   box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.52);
+  .signInOrSignUp {
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+  }
 
   nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    padding: 0.5em;
+    position: relative;
     input {
       display: none;
     }
-    &.checked {
-      color: red;
-    }
-    label.checked {
+   .checked {
       color: red;
       font-weight: bold;
     }
+    .inkBar {
+      position: absolute;
+      bottom: 0;
+      width: 2.8em;
+      background: orange;
+      height: 2px;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+      transform: translate3d(3.5em, 0, 0);
+    }
+    div {
+      cursor: pointer;
+    }
+
+
 
   }
   font-family: "iconfont";
@@ -51,26 +75,26 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   .username>label:before {
-    content: "\e607";
+    content: "\e657";
     font-size: 1.5em;
     vertical-align: middle;
     color: #55ff6c;
   }
   .password>label:before {
-    content: "\e6d7";
+    content: "\e669";
     font-size: 1.5em;
     vertical-align: middle;
     color: red;
   }
   .email>label:before {
-    content: "\e613";
-    font-size: 1.1em;
+    content: "\e647";
+    font-size: 1.5em;
     vertical-align: middle;
     color: #68f7ff;
   }
   .forgotPassword label:before {
-    content: "\e613";
-    font-size: 1.1em;
+    content: "\e647";
+    font-size: 1.5em;
     vertical-align: middle;
     color: #68f7ff;
   }
@@ -85,25 +109,18 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 440476 */
-  src: url('//at.alicdn.com/t/font_440476_837681gier9kke29.eot');
-  src: url('//at.alicdn.com/t/font_440476_837681gier9kke29.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_440476_837681gier9kke29.woff') format('woff'),
-  url('//at.alicdn.com/t/font_440476_837681gier9kke29.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_440476_837681gier9kke29.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.eot');
+  src: url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.svg#iconfont') format('svg');
 }
 
-.UserDialog .signInOrSignUp > nav:first-child {
-  padding: 1em;
-  margin-left: -2em;
-}
 
-.UserDialog .signInOrSignUp > nav:first-child label {
-  margin-left: 2em;
-  cursor: pointer;
-}
 
 .UserDialog .signInOrSignUp > .panes {
-  padding: 0 1em 1em;
+  padding: 0.5em 1em;
+  border-top: solid 1px rgb(232, 234, 238);
 }
 
 .UserDialog .forgotPassword > h3 {
@@ -123,8 +140,11 @@
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
   }
   .wrong:after {
+    position: absolute;
+    top: -0.5em;
     content: "\e600";
     font-size: 20px;
     vertical-align: middle;
