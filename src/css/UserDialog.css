@@ -37,6 +37,9 @@
   -o-transition: all 1s;
   transition: all 1s;
 }
+.UserDialog input {
+  border-width: 1px;
+}
 .UserDialog nav {
   display: flex;
   justify-content: space-evenly;
