@@ -99,10 +99,12 @@
   margin-bottom: 0;
 }
 @font-face {
-  font-family: 'iconfont';
-  /* project id 440476 */
-  src: url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.eot');
-  src: url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.woff') format('woff'), url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.ttf') format('truetype'), url('//at.alicdn.com/t/font_440476_mb7nilxyob7w4s4i.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 440476 */
+  src: url('//at.alicdn.com/t/font_440476_a2pgg8r3jsdzpvi.eot');
+  src: url('//at.alicdn.com/t/font_440476_a2pgg8r3jsdzpvi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_440476_a2pgg8r3jsdzpvi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_440476_a2pgg8r3jsdzpvi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_440476_a2pgg8r3jsdzpvi.svg#iconfont') format('svg');
 }
 .UserDialog .signInOrSignUp > .panes {
   padding: 0.5em 1em;

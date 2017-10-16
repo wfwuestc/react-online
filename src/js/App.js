@@ -7,7 +7,8 @@ import '../css/reset.css'
 // import * as localStore from './localStore'
 import UserDialog from './UserDialog'
 import {getCurrentUser, signOut, TodoModel} from './leanCloud'
-
+import Clock from './Clock'
+import Weather from './Weather'
 
 var log = console.log.bind(console)
 
@@ -42,6 +43,8 @@ class App extends Component {
         })
     return (
         <div className="App">
+          <Clock/>
+          <Weather/>
           <h1>{this.state.user.username || '我'}的待办
             {this.state.user.id ? <div className='logout' onClick={this.signOut.bind(this)}></div> : null}
           </h1>
@@ -53,6 +56,7 @@ class App extends Component {
           <ol className="todoList">
             {todos}
           </ol>
+
           {this.state.user.id ?
               null :
               <UserDialog

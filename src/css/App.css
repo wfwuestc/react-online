@@ -42,3 +42,9 @@
 .todoList > li:nth-child(even) {
   background: rgba(181, 255, 183, 0.7);
 }
+.clock {
+  position: absolute;
+  top: 1em;
+  color: #000000;
+  font-size: small;
+}
