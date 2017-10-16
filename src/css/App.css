@@ -44,7 +44,27 @@
 }
 .clock {
   position: absolute;
-  top: 1em;
+  top: 4em;
   color: #000000;
+  left: 0.8em;
   font-size: small;
+}
+.clock p {
+  padding: 0.1em;
+}
+.weather {
+  position: absolute;
+  top: 1.5em;
+  left: 2.5em;
+  font-size: smaller;
+}
+.weather .wea {
+  position: absolute;
+  top: 1.2em;
+  left: -1.2em;
+}
+.weather .temperature {
+  position: absolute;
+  right: -1.2em;
+  top: 1.2em;
 }

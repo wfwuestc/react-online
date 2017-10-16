@@ -24,7 +24,8 @@ class Weather extends React.Component {
       log(cityId)
       xhr1.open('GET',cityId);
       xhr1.onreadystatechange = function(){
-        if (xhr1.readyState == 4 && xhr1.status == 200 || xhr1.status == 304) {
+        if (xhr1.readyState === 4 && (xhr1.status === 200 || xhr1.status === 304)) {
+          if(JSON.parse(xhr1.response).status === "error") {return}
           getWeather.call(this, xhr1.response)
         }
       }
@@ -39,7 +40,7 @@ class Weather extends React.Component {
       var cityId = 'http://weixin.jirengu.com/weather/now?cityid=' + id
       xhr1.open('GET',cityId,false);
       xhr1.onreadystatechange = function(){
-        if (xhr1.readyState == 4 && xhr1.status == 200 || xhr1.status == 304) {
+        if (xhr1.readyState === 4 && (xhr1.status === 200 || xhr1.status === 304)) {
           var data = JSON.parse(xhr1.response)
           _this.setState({
             city: city,
@@ -51,7 +52,7 @@ class Weather extends React.Component {
       xhr1.send()
     }
     xhr1.onreadystatechange = function(){
-      if (xhr1.readyState == 4 && xhr1.status == 200 || xhr1.status == 304) {
+      if (xhr1.readyState === 4 && (xhr1.status === 200 || xhr1.status === 304)) {
         log(xhr1.response)
         getCity(xhr1.response)
       }
@@ -64,8 +65,10 @@ class Weather extends React.Component {
   }
   render() {
     return (
-        <div>
-          <p>城市：{this.state.city}</p>
+        <div className={"weather"}>
+          <p className={"city"}>{this.state.city}</p>
+          <p className={"wea"}>{this.state.weather}</p>
+          <p className={"temperature"}>{this.state.temperature}℃</p>
         </div>
     )
   }
