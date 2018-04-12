@@ -27,7 +27,7 @@ export const TodoModel = {
     })
   },
   create({status, title, deleted}, successFn, errorFn) {
-    let Todo = AV.Object.extend('Todo') // 记得把多余的分号删掉，我讨厌分号
+    let Todo = AV.Object.extend('Todo') 
     let todo = new Todo()
     todo.set('title', title)
     todo.set('status', status)
